@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Corazón Nómada - Contacto</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="paquetes.html">Paquetes</a></li>
+        <li><a href="experiencias.html">Experiencias</a></li>
+        <li><a href="contacto.html" class="active">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Contacto</h1>
+    <p>Envíanos tus dudas o solicita cotizaciones aquí.</p>
+
+    <form id="formContacto" novalidate>
+      <label for="nombreContacto">Nombre completo</label>
+      <input type="text" id="nombreContacto" name="nombreContacto" required />
+
+      <label for="medioContacto">Medio de contacto preferido</label>
+      <select id="medioContacto" name="medioContacto" required>
+        <option value="" disabled selected>Selecciona una opción</option>
+        <option value="email">Correo electrónico</option>
+        <option value="whatsapp">WhatsApp</option>
+      </select>
+
+      <div id="campoContactoContainer" style="display:none;">
+        <label id="etiquetaContacto" for="campoContacto">Tu correo o número</label>
+        <input type="text" id="campoContacto" name="campoContacto" />
+      </div>
+
+      <label for="destino">Destino deseado</label>
+      <input type="text" id="destino" name="destino" required />
+
+      <label for="cantidadPersonas">Cantidad de personas</label>
+      <input type="number" id="cantidadPersonas" name="cantidadPersonas" min="1" required />
+
+      <label for="cantidadNinos">Cantidad de niños (si aplica)</label>
+      <input type="number" id="cantidadNinos" name="cantidadNinos" min="0" required />
+
+      <label for="tipoHotel">Tipo de hotel</label>
+      <select id="tipoHotel" name="tipoHotel" required>
+        <option value="" disabled selected>Selecciona una opción</option>
+        <option value="5 estrellas">5 estrellas</option>
+        <option value="4 estrellas">4 estrellas</option>
+        <option value="3 estrellas">3 estrellas</option>
+        <option value="hostal">Hostal</option>
+        <option value="otros">Otros</option>
+      </select>
+
+      <label for="cantidadDias">Cantidad de días</label>
+      <input type="number" id="cantidadDias" name="cantidadDias" min="1" required />
+
+      <label for="transporte">Transporte</label>
+      <select id="transporte" name="transporte" required>
+        <option value="" disabled selected>Selecciona una opción</option>
+        <option value="Charter">Charter</option>
+        <option value="Sprinter">Sprinter</option>
+        <option value="Avión">Avión</option>
+        <option value="Otro">Otro</option>
+      </select>
+
+      <button type="submit" class="btn-enviar">Enviar</button>
+    </form>
+  </main>
+
+  <a 
+    href="https://wa.me/5211234567890" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    class="whatsapp-float" 
+    aria-label="Chat WhatsApp"
+    title="Contacta por WhatsApp"
+  >
+    &#128172;
+  </a>
+
+  <script>
+    const medioContacto = document.getElementById('medioContacto');
+    const campoContactoContainer = document.getElementById('campoContactoContainer');
+    const etiquetaContacto = document.getElementById('etiquetaContacto');
+    const campoContacto = document.getElementById('campoContacto');
+
+    medioContacto.addEventListener('change', function () {
+      const valor = this.value;
+      if (valor === 'email') {
+        etiquetaContacto.textContent = 'Correo electrónico';
+        campoContacto.type = 'email';
+        campoContacto.placeholder = 'ejemplo@correo.com';
+        campoContacto.required = true;
+        campoContactoContainer.style.display = 'block';
+      } else if (valor === 'whatsapp') {
+        etiquetaContacto.textContent = 'Número de WhatsApp';
+        campoContacto.type = 'tel';
+        campoContacto.placeholder = 'Ej: 5551234567';
+        campoContacto.required = true;
+        campoContactoContainer.style.display = 'block';
+      } else {
+        campoContactoContainer.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

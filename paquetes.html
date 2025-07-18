@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Corazón Nómada - Paquetes</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .galeria-preview,
+    .galeria-completa {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .galeria-preview img,
+    .galeria-completa img {
+      width: 100%;
+      height: 150px;
+      border-radius: 8px;
+      cursor: pointer;
+      object-fit: cover;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal img {
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="paquetes.html" class="active">Paquetes</a></li>
+        <li><a href="experiencias.html">Experiencias</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Paquetes turísticos</h1>
+
+    <!-- Sección 1: Destinos conocidos -->
+    <section class="tour">
+      <h2>Tour a Zacatlán, Puebla</h2>
+      <p>Este recorrido incluye los siguientes lugares:</p>
+      <ul>
+        <li>Zacatlán de las manzanas</li>
+        <li>Atlixco</li>
+        <li>Barranca de los Jilgueros</li>
+        <li>Centro de Puebla</li>
+        <li>Valle de las piedras encimadas</li>
+        <li>Salto de Quetzalapan</li>
+        <li>Museo del ajolote, Chignahuapan</li>
+      </ul>
+
+      <div class="galeria-preview">
+        <img src="img/salto2.jpg" alt="Cascada en Zacatlán">
+        <img src="img/atlixco.jpg" alt="Atlixco">
+        <img src="img/barranca-de-los-jilgueros.jpg" alt="Barranca de los jilgueros">
+      </div>
+      <div class="galeria-completa" style="display: none;">
+        <img src="img/catedral-puebla.jpg" alt="Catedral de Puebla">
+        <img src="img/presidencia-municipal-zacatlan.jpg" alt="Presidencia municipal Zacatlán">
+        <img src="img/valle-de-las-piedras-encimadas.jpg" alt="Valle de las piedras encimadas">
+        <img src="img/zacatlan-de-las-manzanas.jpg" alt="Zacatlán de las manzanas">
+        <img src="img/zacatlan.jpg">
+        <img src="img/zacatlan2.jpg">
+        <img src="img/zacatlan3.jpg">
+        <img src="img/zacatlan4.jpg">
+        <img src="img/zacatlan5.jpg">
+        <img src="img/zacatlan6.jpg">
+        <img src="img/zacatlan7.jpg">
+        <img src="img/zacatlan8.jpg">
+        <img src="img/zacatlan9.jpg">
+        <img src="img/zacatlan10.jpg">
+        <img src="img/zacatlan11.jpg">
+        <img src="img/zacatlan12.jpg">
+        <img src="img/zacatlan13.jpg">
+        <img src="img/zacatlan14.jpg">
+        <img src="img/zacatlan15.jpg">
+        <img src="img/zacatlan16.jpg">
+        <img src="img/zacatlan17.jpg">
+        <img src="img/zacatlan18.jpg">
+        <img src="img/zacatlan19.jpg">
+        <img src="img/zacatlan20.jpg">
+        <img src="img/salto.jpg">
+        <img src="img/salto3.jpg">
+        <img src="img/salto4.jpg">
+        <img src="img/salto5.jpg">
+        </div>
+      <button class="ver-galeria">Ver galería completa</button>
+
+      <h2>Tour a Maruata, Michoacan</h2>
+      <p>Este recorrido incluye los siguientes lugares:</p>
+      <ul>
+        <li>Playas de Maruata</li>
+        <li>Playa palma sola</li>
+        <li>Dedo de Dios en Maruata</li>
+        <li>Playa Faro de Bucerías</li>
+        <li>Campamento tortuguero</li>
+      </ul>
+
+      <div class="galeria-preview">
+        <img src="img/maruata.jpg">
+        <img src="img/maruata4.jpg">
+        <img src="img/campamento-tortuguero.jpg">
+      </div>
+      <div class="galeria-completa" style="display: none;">
+        <img src="img/maruata2.jpg">
+        <img src="img/maruata3.jpg">
+        <img src="img/campamento-tortuguero2.jpg">
+        <img src="img/maruata5.jpg">
+        <img src="img/faro-de-bucerias.jpg">
+        <img src="img/faro-de-bucerias2.jpg">
+        <img src="img/faro-de-bucerias3.jpg">
+        <img src="img/faro-de-bucerias4.jpg">
+        <img src="img/faro-de-bucerias5.jpg">
+        <img src="img/campamento-tortuguero3.jpg">
+        <img src="img/campamento-tortuguero4.jpg">
+        <img src="img/faro-de-bucerias6.jpg">
+        <img src="img/faro-de-bucerias7.jpg">
+        <img src="img/campamento-tortuguero5.jpg">
+        <img src="img/dedo-de-dios.jpg">
+        <img src="img/faro-de-bucerias8.jpg">
+      </div>
+      <button class="ver-galeria">Ver galería completa</button>
+
+      <h2>Tour a Tlaxcala</h2>
+      <p>Este recorrido incluye los siguientes lugares:</p>
+      <ul>
+        <li>Taller de Talavera Tézmol, San Pablo del Monte</li>
+        <li>Tlaxcala, Tlaxcala</li>
+        <li>Nanacamipla, el santuario de las luciérnagas</li>
+        <li>Playa Faro de Bucerías</li>
+      </ul>
+
+      <div class="galeria-preview">
+        <img src="img/tlaxcala2.jpg">
+        <img src="img/tlaxcala4.jpg">
+        <img src="img/taller5.jpg">
+      </div>
+      <div class="galeria-completa" style="display: none;">
+        <img src="img/tlaxcala.jpg">
+        <img src="img/tlaxcala3.jpg">
+        <img src="img/tlaxcala5.jpg">
+        <img src="img/taller.jpg">
+        <img src="img/taller2.jpg">
+        <img src="img/taller3.jpg">
+        <img src="img/taller4.jpg">
+        <img src="img/taller6.jpg">
+        <img src="img/taller7.jpg"> 
+      </div>
+      <button class="ver-galeria">Ver galería completa</button>
+      <a href="contacto.html#formContacto" class="boton-principal">Reservar un tour</a>
+    </section>
+
+    <!-- Sección 2: Paquetes ya armados -->
+    <section class="paquetes-section">
+      <h2>Paquetes a Cancún</h2>
+      <div class="carousel-container">
+        <button class="carousel-btn left" onclick="moveCarousel('cancun', -1)">&#10094;</button>
+        <div class="carousel-track" id="cancun-carousel">
+          <img src="img/1.jpg" alt="Dos Playas Faranda">
+          <img src="img/2.jpg" alt="Sunset Marina Resort">
+          <img src="img/3.jpg" alt="All Ritmo Resort & WP">
+          <img src="img/4.jpg" alt="Imperial las Perlas">
+          <img src="img/5.jpg" alt="Ocean View Arenas">
+          <img src="img/6.jpg" alt="Flamingo Cancun">
+        </div>
+        <button class="carousel-btn right" onclick="moveCarousel('cancun', 1)">&#10095;</button>
+          <a href="contacto.html#formContacto" class="boton-principal">Reservar</a>
+      </div>
+
+      <h2>Paquetes a Vallarta</h2>
+      <div class="carousel-container">
+        <button class="carousel-btn left" onclick="moveCarousel('vallarta', -1)">&#10094;</button>
+        <div class="carousel-track" id="vallarta-carousel">
+          <img src="img/7.jpg" alt="Hotel Krystal">
+          <img src="img/8.jpg" alt="Hotel Villa Varadero">
+          <img src="img/9.jpg" alt="Sunscape Vallarta">
+          <img src="img/10.jpg" alt="Flamingo Vallarta">
+          <img src="img/11.jpg" alt="Hotel Doña Susana">
+          <img src="img/12.jpg" alt="Hacienda Buenaventura">
+        </div>
+        <button class="carousel-btn right" onclick="moveCarousel('vallarta', 1)">&#10095;</button>
+        <a href="contacto.html#formContacto" class="boton-principal">Reservar</a>
+      </div>       
+
+      <!-- Sección 2: Paquetes ya armados Tarjetas-->
+      <div class="tarjeta-paquete">
+        <video class="video-tarjeta" autoplay muted loop playsinline>
+          <source src="img/escapada.mp4" type="video/mp4">
+          Tu navegador no soporta videos.
+        </video>
+        <div class="contenido-tarjeta">
+          <h3>Escapada Romántica</h3>
+          <p>Disfruta de un viaje inolvidable con esa persona especial en un destino mágico.</p>
+          <a href="contacto.html#formContacto" class="boton-principal">Reservar</a>
+        </div>
+      </div>
+
+      <div class="tarjeta-paquete">
+        <video class="video-tarjeta" autoplay muted loop playsinline>
+          <source src="img/viaje.mp4" type="video/mp4">
+          Tu navegador no soporta videos.
+        </video>
+        <div class="contenido-tarjeta">
+          <h3>Viaje a la Playa</h3>
+          <p>Conecta con el mar, la arena y el sol en una escapada llena de energía y descanso.</p>
+          <a href="contacto.html#formContacto" class="boton-principal">Reservar</a>
+        </div>
+      </div>
+      </div>
+    </section>
+
+
+    <!-- Sección 3: Arma tu propio paquete -->
+    <section>
+      <h2>Arma tu propio paquete</h2>
+      <p>Personaliza tu experiencia según tus necesidades.</p>
+      <form id="formPersonalizado">
+        <label for="destino">Destino deseado</label>
+        <input type="text" id="destino" name="destino" required />
+
+        <label for="dias">Cantidad de días</label>
+        <input type="number" id="dias" name="dias" min="1" required />
+
+        <label for="hotel">Tipo de hospedaje</label>
+        <select id="hotel" name="hotel" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="hostal">Hostal</option>
+          <option value="3 estrellas">3 estrellas</option>
+          <option value="4 estrellas">4 estrellas</option>
+          <option value="5 estrellas">5 estrellas</option>
+        </select>
+
+        <label for="transporte">¿Necesitas transporte?</label>
+        <select id="transporte" name="transporte" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="charter">Charter</option>
+          <option value="renta de auto">Renta de vehículo</option>
+          <option value="avion">Boletos de avión</option>
+          <option value="ninguno">Ninguno</option>
+        </select>
+
+        <button type="submit" class="btn-cotizacion">Solicitar cotización</button>
+      </form>
+    </section>
+  </main>
+
+  <div id="modal" class="modal">
+    <img id="modalImg" src="" alt="imagen ampliada">
+  </div>
+
+  <a 
+    href="https://wa.me/5211234567890" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    class="whatsapp-float" 
+    aria-label="Chat WhatsApp"
+    title="Contacta por WhatsApp"
+  >
+    &#128172;
+  </a>
+
+  <script>
+      document.querySelectorAll(".ver-galeria").forEach((btn, index) => {
+        const galerias = document.querySelectorAll(".galeria-completa");
+        btn.addEventListener("click", () => {
+          const galeria = galerias[index];
+          const isVisible = galeria.style.display === "grid";
+          galeria.style.display = isVisible ? "none" : "grid";
+          btn.textContent = isVisible ? "Ver galería completa" : "Ocultar galería";
+        });
+      });
+
+      const modal = document.getElementById("modal");
+      const modalImg = document.getElementById("modalImg");
+
+      document.querySelectorAll(".galeria-preview img, .galeria-completa img").forEach(img => {
+        img.addEventListener("click", () => {
+          modalImg.src = img.src;
+          modal.classList.add("active");
+        });
+      });
+
+      modal.addEventListener("click", () => {
+        modal.classList.remove("active");
+      });
+  </script>
+
+  <script>
+    const positions = {
+      cancun: 0,
+      vallarta: 0
+    };
+
+    function moveCarousel(id, direction) {
+      const carousel = document.getElementById(`${id}-carousel`);
+      const images = carousel.querySelectorAll('img');
+      const imageWidth = images[0].clientWidth + 10; // 10px margin
+
+      const max = images.length;
+      positions[id] += direction;
+
+      if (positions[id] < 0) positions[id] = 0;
+      if (positions[id] > max - 1) positions[id] = max - 1;
+
+      carousel.style.transform = `translateX(-${positions[id] * imageWidth}px)`;
+    }
+  </script>
+
+</body>
+</html>
+
+
+
+

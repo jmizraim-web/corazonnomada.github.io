@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Corazón Nómada - Experiencias</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="paquetes.html">Paquetes</a></li>
+        <li><a href="experiencias.html" class="active">Experiencias</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Experiencias</h1>
+    <p>Lee algunas experiencias de quienes han viajado con nosotros. Si tú también quieres compartir la tuya, haz clic en el siguiente botón.</p>
+
+    <button id="btnMostrarFormulario" aria-expanded="false">Compartir tu experiencia</button>
+
+    <div id="formularioExperiencia" style="display: none;">
+      <form id="formExperiencia" novalidate>
+        <label for="nombreUsuario">Tu nombre</label>
+        <input type="text" id="nombreUsuario" name="nombreUsuario" required />
+
+        <label for="destinoVisitado">Destino visitado</label>
+        <input type="text" id="destinoVisitado" name="destinoVisitado" required />
+
+        <label for="resena">Cuéntanos tu experiencia</label>
+        <textarea id="resena" name="resena" rows="5" required></textarea>
+
+        <label for="adjuntos">Fotos o videos (opcional)</label>
+        <input type="file" id="adjuntos" name="adjuntos" multiple accept="image/*,video/*" />
+
+        <button type="submit" class="btn-revisar">Revisar</button>
+      </form>
+    </div>
+  </main>
+
+  <a 
+    href="https://wa.me/5211234567890" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    class="whatsapp-float" 
+    aria-label="Chat WhatsApp"
+    title="Contacta por WhatsApp"
+  >
+    &#128172;
+  </a>
+
+  <script>
+    const btnMostrarFormulario = document.getElementById('btnMostrarFormulario');
+    const formExperiencia = document.getElementById('formularioExperiencia');
+
+    btnMostrarFormulario.addEventListener('click', () => {
+      const isVisible = formExperiencia.style.display === 'block';
+      formExperiencia.style.display = isVisible ? 'none' : 'block';
+      btnMostrarFormulario.setAttribute('aria-expanded', !isVisible);
+      btnMostrarFormulario.textContent = isVisible
+        ? 'Compartir tu experiencia'
+        : 'Cerrar formulario';
+    });
+  </script>
+</body>
+</html>
