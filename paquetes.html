@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Corazón Nómada - Paquetes</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     .galeria-preview,
     .galeria-completa {
@@ -47,15 +48,24 @@
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="paquetes.html" class="active">Paquetes</a></li>
-        <li><a href="experiencias.html">Experiencias</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
-      </ul>
-    </nav>
+  <header class="header-fijo">
+    <div class="contenedor-header">
+      <div class="logo-titulo">
+        <img src="img/logo.jpg" alt="Corazón Nómada" class="logo">
+        <h1>Corazón Nómada</h1>
+      </div>
+      <nav class="navbar">
+        <div class="menu-toggle" id="menu-toggle">
+          &#9776;
+        </div>
+        <ul class="nav-list" id="nav-list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="paquetes.html">Paquetes</a></li>
+          <li><a href="experiencias.html">Experiencias</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
@@ -177,7 +187,6 @@
     </section>
 
     <!-- Sección 2: Paquetes ya armados -->
-    <section class="paquetes-section">
       <h2>Paquetes a Cancún</h2>
       <div class="carousel-container">
         <button class="carousel-btn left" onclick="moveCarousel('cancun', -1)">&#10094;</button>
@@ -190,8 +199,10 @@
           <img src="img/6.jpg" alt="Flamingo Cancun">
         </div>
         <button class="carousel-btn right" onclick="moveCarousel('cancun', 1)">&#10095;</button>
-          <a href="contacto.html#formContacto" class="boton-principal">Reservar</a>
+        <div class="carousel-indicators" id="cancun-indicators"></div>
       </div>
+      <a href="contacto.html#formContacto" class="boton-principal">Reservar</a>
+
 
       <h2>Paquetes a Vallarta</h2>
       <div class="carousel-container">
@@ -205,8 +216,10 @@
           <img src="img/12.jpg" alt="Hacienda Buenaventura">
         </div>
         <button class="carousel-btn right" onclick="moveCarousel('vallarta', 1)">&#10095;</button>
-        <a href="contacto.html#formContacto" class="boton-principal">Reservar</a>
-      </div>       
+        <div class="carousel-indicators" id="vallarta-indicators"></div>
+      </div>
+      <a href="contacto.html#formContacto" class="boton-principal">Reservar</a>
+    
 
       <!-- Sección 2: Paquetes ya armados Tarjetas-->
       <div class="tarjeta-paquete">
@@ -240,9 +253,23 @@
     <section>
       <h2>Arma tu propio paquete</h2>
       <p>Personaliza tu experiencia según tus necesidades.</p>
-      <form id="formPersonalizado">
+      <form id="formPersonalizado" action="https://formspree.io/f/xovldzjl" method="POST">
         <label for="destino">Destino deseado</label>
         <input type="text" id="destino" name="destino" required />
+
+        <input type="hidden" name="email" value="jairo-cca@live.com.mx">
+
+        <label for="medioContacto">Medio de contacto preferido</label>
+      <select id="medioContacto" name="medioContacto" required>
+        <option value="" disabled selected>Selecciona una opción</option>
+        <option value="email">Correo electrónico</option>
+        <option value="whatsapp">WhatsApp</option>
+      </select>
+
+      <div id="campoContactoContainer" style="display:none;">
+        <label id="etiquetaContacto" for="campoContacto">Tu correo o número</label>
+        <input type="text" id="campoContacto" name="contacto" />
+      </div>
 
         <label for="dias">Cantidad de días</label>
         <input type="number" id="dias" name="dias" min="1" required />
@@ -267,6 +294,10 @@
 
         <button type="submit" class="btn-cotizacion">Solicitar cotización</button>
       </form>
+      <div class="mensaje-confirmacion" style="display:none;">
+        <p>¡Gracias por tu solicitud! Pronto te enviaremos la cotización</p>
+        <button class="btn-cerrar-confirmacion">Cerrar</button>
+      </div>
     </section>
   </main>
 
@@ -274,15 +305,50 @@
     <img id="modalImg" src="" alt="imagen ampliada">
   </div>
 
+  <footer class="footer">
+    <div class="footer-contenido">
+      
+      <div class="footer-logo">
+        <p class="nombre-marca">Corazón Nómada</p>     
+        <p>Explora, siente, viaja. Vive con Corazón Nómada.</p>
+      </div>
+
+      <div class="footer-contacto">
+        <h4>Contacto</h4>
+        <p>Email: <a href="mailto:jairo-cca@live.com.mx">jairo-cca@live.com.mx</a></p>
+        <p>WhatsApp: <a href="https://wa.me/524494980275" target="_blank">+52 449 498 0275</a></p>
+      </div>
+
+      <div class="footer-redes">
+        <h4>Síguenos</h4>
+        <a href="https://facebook.com" target="_blank">Facebook</a>
+        <a href="https://instagram.com" target="_blank">Instagram</a>
+        <a href="https://tiktok.com" target="_blank">TikTok</a>
+      </div>
+
+      <div class="footer-enlaces">
+        <h4>Enlaces</h4>
+        <a href="index.html">Inicio</a>
+        <a href="paquetes.html">Paquetes</a>
+        <a href="contacto.html">Reservar</a>
+        <a href="experiencias.html">Experiencias</a>
+      </div>
+    </div>
+
+    <div class="footer-derechos">
+      <p>© 2025 Corazón Nómada. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
   <a 
-    href="https://wa.me/5211234567890" 
+    href="https://wa.me/4494980275" 
     target="_blank" 
     rel="noopener noreferrer" 
-    class="whatsapp-float" 
+    class="whatsapp-float"
     aria-label="Chat WhatsApp"
-    title="Contacta por WhatsApp"
+    title="Contáctanos por WhatsApp"
   >
-    &#128172;
+    <i class="fab fa-whatsapp"></i>
   </a>
 
   <script>
@@ -320,7 +386,7 @@
     function moveCarousel(id, direction) {
       const carousel = document.getElementById(`${id}-carousel`);
       const images = carousel.querySelectorAll('img');
-      const imageWidth = images[0].clientWidth + 10; // 10px margin
+      const imageWidth = images[0].clientWidth + 10;
 
       const max = images.length;
       positions[id] += direction;
@@ -329,12 +395,129 @@
       if (positions[id] > max - 1) positions[id] = max - 1;
 
       carousel.style.transform = `translateX(-${positions[id] * imageWidth}px)`;
+
+      updateIndicators(id, positions[id], max);
     }
+
+    function updateIndicators(id, index, total) {
+      const container = document.getElementById(`${id}-indicators`);
+      container.innerHTML = '';
+
+      for (let i = 0; i < total; i++) {
+        const dot = document.createElement('span');
+        if (i === index) {
+          dot.classList.add('active');
+        }
+        container.appendChild(dot);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      updateIndicators('cancun', 0, document.querySelectorAll('#cancun-carousel img').length);
+      updateIndicators('vallarta', 0, document.querySelectorAll('#vallarta-carousel img').length);
+    });
   </script>
 
+  <script>
+    const medioContacto = document.getElementById('medioContacto');
+    const campoContactoContainer = document.getElementById('campoContactoContainer');
+    const etiquetaContacto = document.getElementById('etiquetaContacto');
+    const campoContacto = document.getElementById('campoContacto');
+
+    medioContacto.addEventListener('change', function () {
+      const valor = this.value;
+      if (valor === 'email') {
+        etiquetaContacto.textContent = 'Correo electrónico';
+        campoContacto.type = 'email';
+        campoContacto.placeholder = 'ejemplo@correo.com';
+        campoContacto.required = true;
+        campoContactoContainer.style.display = 'block';
+      } else if (valor === 'whatsapp') {
+        etiquetaContacto.textContent = 'Número de WhatsApp';
+        campoContacto.type = 'tel';
+        campoContacto.placeholder = 'Ej: 5551234567';
+        campoContacto.required = true;
+        campoContactoContainer.style.display = 'block';
+      } else {
+        campoContactoContainer.style.display = 'none';
+      }
+    });
+  </script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const formularios = document.querySelectorAll('form[action*="formspree.io"]');
+
+    formularios.forEach(form => {
+      const mensaje = form.nextElementSibling;
+      const botonCerrar = mensaje.querySelector('.btn-cerrar-confirmacion');
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const btn = form.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.textContent = 'Enviando...';
+
+        try {
+          const formData = new FormData(form);
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            form.reset();
+            form.style.display = 'none';
+            mensaje.style.display = 'block';
+          } else {
+            alert('Ocurrió un error al enviar. Intenta de nuevo.');
+          }
+        } catch (error) {
+          console.error('Error al enviar el formulario:', error);
+          alert('Error al enviar. Intenta más tarde.');
+        } finally {
+          btn.disabled = false;
+          btn.textContent = 'Enviar';
+        }
+      });
+
+      botonCerrar.addEventListener('click', () => {
+        mensaje.style.display = 'none';
+        form.style.display = 'block';
+      });
+    });
+  });
+  </script>
+
+  <script>
+    // Maneja el efecto de scroll en el header
+    document.addEventListener('DOMContentLoaded', function() {
+      const header = document.querySelector('.header-fijo');
+      
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+    });
+  </script>
+
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const navList = document.getElementById('nav-list');
+
+    toggle.addEventListener('click', () => {
+      navList.classList.toggle('activo');
+    });
+  </script>
 </body>
 </html>
-
 
 
 
