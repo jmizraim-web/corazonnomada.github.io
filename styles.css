@@ -774,14 +774,31 @@ select {
   font-weight: 700;
 }
 
+.logo-nav-combo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.logo-nav-combo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
 @media (max-width: 768px) {
   .contenedor-header {
     flex-direction: column;
-    padding: 0.5rem;
+    align-items: stretch;
+    padding: 0.5rem 1rem;
   }
   
   .logo-titulo {
     margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
   
   .logo-titulo h1 {
@@ -794,7 +811,7 @@ select {
 }
 
 .menu-toggle {
-  display: none;
+  display: block;
   font-size: 1.8rem;
   color: white;
   cursor: pointer;
