@@ -21,7 +21,7 @@
         <ul class="nav-list" id="nav-list">
           <li><a href="index.html">Inicio</a></li>
           <li><a href="paquetes.html">Paquetes</a></li>
-          <li><a href="experiencias.html">Experiencias</a></li>
+          <li><a class="active" href="experiencias.html">Experiencias</a></li>
           <li><a href="contacto.html">Contacto</a></li>
         </ul>
       </nav>
@@ -36,16 +36,16 @@
       <h3>Zacatlán, Puebla <small>por Sonia S.</small></h3>
       <p>"El tour por las cascadas fue increíble. Los guías conocían cada rincón y nos llevaron a lugares secretos. Las fotos no hacen justicia a la belleza del lugar. ¡Volvería sin dudarlo!"</p>
       <div class="galeria-experiencia">
-        <img src="img/experiencia-zacatlan.jpg" alt="Cascada en Zacatlán" loading="lazy">
-        <img src="img/grupo-viajeros.jpg" alt="Grupo de viajeros" loading="lazy">
+        <img src="img/presidencia-municipal-zacatlan.jpg" alt="Zacatlán" loading="lazy">
+        <img src="img/recuerdo4.jpg" alt="Grupo de viajeros" loading="lazy">
       </div>
     </div>
 
     <button id="btnMostrarFormulario" class="btn-revisar">Compartir tu experiencia</button>
 
     <div id="formularioContainer">
-      <form id="formExperiencia" action="https://formspree.io/f/xpwldnyn" method="POST" enctype="multipart/form-data">
-
+      <!-- Formspree -->
+      <form id="formExperiencia" action="https://formspree.io/f/xpwldnyn" method="POST">
         <label for="nombreUsuario">Nombre</label>
         <input type="text" id="nombreUsuario" name="nombre" required>
 
@@ -58,8 +58,11 @@
         <textarea id="resena" name="reseña" rows="5" required minlength="50"></textarea>
 
         <label for="adjuntos">Fotos (opcional, máximo 5)</label>
-        <input type="file" id="adjuntos" accept="image/*" multiple max="5">
+        <input type="file" id="adjuntos" accept="image/*" multiple>
+        <small id="ayuda-archivos">Hasta 5 imágenes, máximo 3 MB por imagen.</small>
         <div id="preview-imagenes"></div>
+
+        <!-- Aquí guardamos las URLs que genera imgbb -->
         <input type="hidden" name="imagenes_urls" id="imagenesUrls">
 
         <div class="form-buttons">
@@ -69,8 +72,7 @@
       </form>
     </div>
 
-
-    <div id="mensaje-exito">
+    <div id="mensaje-exito" style="display:none;">
       <p>¡Gracias por compartir! Tu experiencia está en revisión. Una vez aprobada la podrás ver en esta sección.</p>
       <button id="btnCerrarMensaje" class="btn-revisar">Cerrar</button>
     </div>
@@ -78,7 +80,6 @@
 
   <footer class="footer">
     <div class="footer-contenido">
-      
       <div class="footer-logo">
         <p class="nombre-marca">Corazón Nómada</p>     
         <p>Explora, siente, viaja. Vive con Corazón Nómada.</p>
@@ -86,7 +87,7 @@
 
       <div class="footer-contacto">
         <h4>Contacto</h4>
-        <p>Email: <a href="mailto:jairo-cca@live.com.mx">jairo-cca@live.com.mx</a></p>
+        <p>Email: <a href="mailto:corazonnomada.ags@gmail.com">corazonnomada.ags@gmail.com</a></p>
         <p>WhatsApp: <a href="https://wa.me/524494980275" target="_blank">+52 449 498 0275</a></p>
       </div>
 
@@ -123,6 +124,7 @@
   </a>
 
   <script>
+    // ====== Mostrar/Ocultar formulario ======
     const btnMostrarFormulario = document.getElementById('btnMostrarFormulario');
     const btnCerrarFormulario = document.getElementById('btnCerrarFormulario');
     const btnCerrarMensaje = document.getElementById('btnCerrarMensaje');
@@ -130,25 +132,30 @@
     const mensajeExito = document.getElementById('mensaje-exito');
     const formExperiencia = document.getElementById('formExperiencia');
 
-    btnMostrarFormulario.addEventListener('click', function() {
+    btnMostrarFormulario.addEventListener('click', () => {
       formularioContainer.style.display = 'block';
-      this.style.display = 'none';
+      btnMostrarFormulario.style.display = 'none';
       mensajeExito.style.display = 'none';
       formExperiencia.reset();
       document.getElementById('preview-imagenes').innerHTML = '';
     });
 
-    btnCerrarFormulario.addEventListener('click', function() {
+    btnCerrarFormulario.addEventListener('click', () => {
       formularioContainer.style.display = 'none';
       btnMostrarFormulario.style.display = 'block';
       formExperiencia.reset();
       document.getElementById('preview-imagenes').innerHTML = '';
     });
 
-    btnCerrarMensaje.addEventListener('click', function() {
+    btnCerrarMensaje.addEventListener('click', () => {
       mensajeExito.style.display = 'none';
       btnMostrarFormulario.style.display = 'block';
     });
+
+    // ====== Subida a imgbb + envío a Formspree ======
+    const IMGBB_KEY = "7eba863ca394342e21a7d81038287882"; 
+    const MAX_FILES = 5;
+    const MAX_MB_PER_FILE = 3;
 
     formExperiencia.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -158,22 +165,56 @@
       submitBtn.textContent = 'Enviando...';
 
       try {
-        const files = document.getElementById('adjuntos').files;
+        // Validaciones y subida a imgbb (si hay imágenes)
+        const fileInput = document.getElementById('adjuntos');
+        const files = Array.from(fileInput.files || []);
+
+        // Límite de cantidad
+        if (files.length > MAX_FILES) {
+          alert(`Máximo ${MAX_FILES} imágenes.`);
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Enviar';
+          return;
+        }
+
+        // Límite de tamaño por imagen
+        for (const f of files) {
+          if (f.size > MAX_MB_PER_FILE * 1024 * 1024) {
+            alert(`Cada imagen debe pesar máximo ${MAX_MB_PER_FILE} MB.`);
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Enviar';
+            return;
+          }
+        }
+
+        let urls = [];
         if (files.length > 0) {
-          const urls = [];
           for (const file of files) {
             const imgData = new FormData();
             imgData.append('image', file);
-            const response = await fetch('https://jsilva.imgbb.com/', {
+            const uploadUrl = `https://api.imgbb.com/1/upload?key=${IMGBB_KEY}`;
+
+            const res = await fetch(uploadUrl, {
               method: 'POST',
               body: imgData
             });
-            const data = await response.json();
-            urls.push(data.data.url);
+
+            if (!res.ok) {
+              throw new Error('Fallo al subir una imagen a imgbb.');
+            }
+
+            const data = await res.json();
+            if (data && data.success && data.data && data.data.url) {
+              urls.push(data.data.url);
+            } else {
+              throw new Error('Respuesta de imgbb inválida.');
+            }
           }
-          document.getElementById('imagenesUrls').value = urls.join(',');
+
+          document.getElementById('imagenesUrls').value = urls.join(', ');
         }
 
+        // Enviar a Formspree
         const formData = new FormData(formExperiencia);
         const response = await fetch(formExperiencia.action, {
           method: 'POST',
@@ -186,6 +227,10 @@
           document.getElementById('preview-imagenes').innerHTML = '';
           formularioContainer.style.display = 'none';
           mensajeExito.style.display = 'block';
+        } else {
+          const err = await response.json().catch(() => null);
+          console.error('Formspree error:', err);
+          alert('No se pudo enviar el formulario. Intenta nuevamente.');
         }
       } catch (error) {
         console.error('Error:', error);
@@ -196,25 +241,34 @@
       }
     });
 
+    // ====== Previsualización de imágenes ======
     document.getElementById('adjuntos').addEventListener('change', function(e) {
       const preview = document.getElementById('preview-imagenes');
       preview.innerHTML = '';
-      
-      Array.from(e.target.files).forEach(file => {
+
+      const files = Array.from(e.target.files || []);
+      files.slice(0, MAX_FILES).forEach(file => {
         if (!file.type.match('image.*')) return;
-        
         const img = document.createElement('img');
         img.src = URL.createObjectURL(file);
+        img.style.height = '80px';
+        img.style.width = 'auto';
+        img.style.marginRight = '8px';
+        img.style.borderRadius = '6px';
+        img.style.border = '1px solid #ddd';
         preview.appendChild(img);
       });
+
+      if (files.length > MAX_FILES) {
+        alert(`Máximo ${MAX_FILES} imágenes. Se mostrarán las primeras ${MAX_FILES}.`);
+      }
     });
   </script>
 
   <script>
-    // Maneja el efecto de scroll en el header
+    // Header: efecto scroll
     document.addEventListener('DOMContentLoaded', function() {
       const header = document.querySelector('.header-fijo');
-      
       window.addEventListener('scroll', function() {
         if (window.scrollY > 50) {
           header.classList.add('scrolled');
@@ -223,15 +277,14 @@
         }
       });
     });
-  </script>
 
-  <script>
+    // Menú hamburguesa
     const toggle = document.getElementById('menu-toggle');
     const navList = document.getElementById('nav-list');
-
     toggle.addEventListener('click', () => {
       navList.classList.toggle('activo');
     });
   </script>
 </body>
 </html>
+

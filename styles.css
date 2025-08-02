@@ -209,7 +209,7 @@ textarea {
 /* ====== Galerías ====== */
 .galeria-preview,
 .galeria-completa {
-  margin-top: 2rem;
+  margin-top: 10PX;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 10px;
@@ -786,32 +786,25 @@ select {
   color: white !important;
 } 
 
+/* ===== Ajustes móviles generales del header ===== */
 @media (max-width: 768px) {
+  .header-fijo { padding: 0.35rem 0; }
   .contenedor-header {
     flex-direction: column;
     align-items: stretch;
     padding: 0.5rem 1rem;
   }
-  
-  .logo-titulo {
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .logo-titulo h1 {
-    font-size: 1.3rem;
-  }
-  
-  main {
-    margin-top: 150px; /* Ajusta según necesidad */
-  }
+  .logo { height: 56px; }
+  .logo-titulo { margin-bottom: 0.25rem; }
+  .logo-titulo h1 { font-size: 1.25rem; }
+  /* Reducimos el espacio extra entre header y contenido */
+  main { margin-top: 0.75rem; }
 }
 
-/* ===== Estilos para navegación en modo móvil ===== */
+/* ===== Navegación móvil (dropdown compacto) ===== */
 @media (max-width: 768px) {
   .navbar {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -819,42 +812,52 @@ select {
   }
 
   .menu-toggle {
-  font-size: 1.8rem;
-  color: white;
-  cursor: pointer;
-  display: flex;
-  align-items: center;  /* centra verticalmente el ícono */
-  padding: 0.3rem;
-  line-height: 1;
-  margin-left: auto;     /* empuja hacia el lado derecho si se requiere */
-}
+    font-size: 1.8rem;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0.3rem;
+    line-height: 1;
+    margin-left: auto;
+  }
 
   .nav-list {
-    display: none;
-    flex-direction: column;
-    background-color: #50858b; /* O el color que prefieras */
-    width: 100%;
-    position: static; /* ← Importante para que no flote */
+    display: none;                 /* se muestra al activar */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #50858b;
+    padding: 0.25rem 0;
     margin: 0;
-    padding: 0;
     list-style: none;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    border-top: 1px solid rgba(255,255,255,0.15);
+    z-index: 1001;
   }
 
-  .nav-list.activo {
-    display: flex;
-  }
+  .nav-list.activo { display: block; }
 
   .nav-list li {
-    text-align: center;
-    padding: 0.7rem 0;
+    padding: 0;                    /* compacta filas */
+    text-align: left;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav-list li:first-child { border-top: none; }
+
+  .nav-list li a {
+    display: block;
+    white-space: nowrap;
+    padding: 0.8rem 1rem;          /* menos alto por item */
+    font-size: 1.05rem;
+    border-radius: 0;              /* botones planos en el dropdown */
   }
 
-  nav ul {
-    flex-direction: column;
-    align-items: stretch;
-  }
+  nav ul { flex-direction: column; align-items: stretch; }
 }
 
+/* ===== Footer ===== */
 .footer {
   background-color: #333333;
   color: white;
@@ -871,7 +874,7 @@ select {
 }
 
 .nombre-marca {
-  font-size: 1.5rem;   /* Aumenta o reduce a tu gusto */
+  font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 6px;
 }
@@ -889,9 +892,7 @@ select {
   transition: color 0.3s;
 }
 
-.footer a:hover {
-  color: #50858b;
-}
+.footer a:hover { color: #50858b; }
 
 .footer-derechos {
   text-align: center;
@@ -900,3 +901,344 @@ select {
   padding-top: 10px;
   font-size: 0.8rem;
 }
+
+/* ===== Estilos mínimos para la página Mega Travel ===== */
+.mega-layout {
+  max-width: 1200px;
+  margin: 1rem auto 2rem auto;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 18px;
+}
+.mega-menu {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  padding: 10px;
+  align-self: start;
+  position: sticky;
+  top: 90px;
+}
+.mega-menu h3 {
+  margin: 6px 10px 10px 10px;
+  font-size: 1rem;
+  color: #50858b;
+}
+.mega-lista { list-style: none; margin: 0; padding: 0; }
+.mega-lista li a {
+  display: block;
+  padding: 10px 12px;
+  margin: 6px 6px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #333;
+  border: 1px solid #e6e6e6;
+  transition: background .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.mega-lista li a:hover,
+.mega-lista li a:focus {
+  outline: none;
+  color: #000;
+  background: #f4f7f7;
+  border-color: #cfd9da;
+  box-shadow: 0 0 0 3px rgba(80,133,139,0.15);
+}
+.mega-lista li a.activo {
+  color: #fff;
+  background: #50858b;
+  border-color: #50858b;
+}
+.mega-contenido { min-width: 0; }
+.mega-titulo {
+  margin: .3rem 0 1rem 0;
+  color: #2c3e50;
+  font-size: 1.4rem;
+  text-align: left;
+}
+.mega-frame-wrap {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,.08);
+}
+.mega-frame {
+  width: 100%;
+  height: 1000px;
+  border: 0;
+  display: block;
+}
+.mega-legend {
+  font-size: .95rem;
+  color: #666;
+  margin-top: 8px;
+  text-align: center;
+}
+/* Select móvil */
+.mega-select-wrap { display: none; margin-bottom: 10px; }
+.mega-select {
+  width: 100%;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1rem;
+}
+@media (max-width: 900px) {
+  .mega-layout { grid-template-columns: 1fr; }
+  .mega-menu { display: none; }
+  .mega-select-wrap { display: block; }
+}
+
+/* ===================== PARCHE MINIMO (añadir al final) ===================== */
+
+/* 0) Seguridad: evitar cortes del header por scroll horizontal */
+html, body { overflow-x: hidden; }
+
+/* 1) Header: evita que se “amontone” antes del breakpoint y asegura ancho */
+.header-fijo {
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+.contenedor-header {
+  flex-wrap: nowrap;
+  gap: 12px;
+}
+
+/* 2) Menú hamburguesa — centrado, debajo del header, con scrim semitransparente */
+@media (max-width: 820px) {
+  .menu-toggle { display: block; }
+  .navbar .nav-list { display: none; }
+
+  .navbar .nav-list.activo {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    position: fixed;
+    top: var(--hdr-h, 96px); /* respeta tu var si ya la tienes */
+    left: 0;
+    right: 0;
+
+    padding: 16px 0 22px;
+    align-items: center;
+    justify-content: flex-start;
+
+    /* scrim semitransparente, no ocupa media pantalla sólida */
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 999;
+  }
+
+  .navbar .nav-list.activo li {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .navbar .nav-list.activo a {
+    background: #50858b;
+    border-radius: 14px;
+    width: min(420px, 86vw);
+    text-align: center;
+    font-size: 1.15rem;
+    padding: .9rem 1.2rem;
+    box-shadow: 0 10px 26px rgba(0,0,0,.2);
+  }
+}
+
+/* 3) Mega Travel — dos columnas en desktop, select en móvil 
+      y contenido ancho sin tapar el menú de categorías */
+
+/* Si puedes, añade en megatravel.html en <body>: class="mega-page"
+   así ampliamos solo esa página y no el resto del sitio. */
+.mega-page main {
+  /* Da un poco más de ancho solo a Mega */
+  max-width: 1280px;
+}
+
+/* Grid de Mega: 260px para el menú de categorías + contenido */
+.mega-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+/* Contenedor del iframe (contenido) con buena altura */
+.mega-frame-wrap {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,.08);
+}
+.mega-frame {
+  width: 100%;
+  min-height: calc(100vh - 220px);
+  border: 0;
+  display: block;
+}
+
+/* Lateral de categorías (desktop) */
+.mega-menu {
+  background:#fff;
+  border-radius:12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.08);
+  padding: 14px;
+}
+.mega-menu .mega-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.mega-menu .mega-lista a {
+  display: block;
+  width: 100%;
+  background: #f6f8f8;
+  color: #2c3e50;
+  border: 1px solid #e6ebec;
+  border-radius: 10px;
+  padding: .65rem .8rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: .98rem;
+  transition: all .2s ease;
+}
+.mega-menu .mega-lista a:hover,
+.mega-menu .mega-lista a.activo {
+  background: #e9f1f2;
+  border-color: #d7e6e8;
+}
+
+/* Select móvil visible y sidebar oculto en pantallas chicas */
+.mega-select-wrap { display: none; }
+@media (max-width: 992px) {
+  .mega-layout { grid-template-columns: 1fr; }
+  .mega-menu { display: none; }
+  .mega-select-wrap { display: block; margin-bottom: 12px; }
+  .mega-select {
+    width: 100%;
+    appearance: none;
+    padding: .9rem 1rem;
+    border-radius: 10px;
+    border: 1px solid #dcdfe2;
+    background: #fff;
+    font-weight: 600;
+  }
+}
+
+/* 4) Indicadores del carrusel (puntitos) — asegura visibilidad */
+.carousel-indicators {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 5;         /* por encima de las imágenes */
+  pointer-events: none;
+}
+.carousel-indicators span {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.6);
+  display: inline-block;
+}
+.carousel-indicators .active { background: #fff; }
+
+/* ===================== PARCHE: HEADER FIJO + MENÚ HAMBURGUESA ===================== */
+
+/* 1) Header realmente fijo que acompaña el scroll */
+:root { --hdr-h: 96px; } /* Ajusta si tu header es más alto/bajo */
+
+.header-fijo{
+  position: fixed !important;
+  top: 0; left: 0; right: 0;
+  z-index: 1500;
+  width: 100%;
+}
+
+/* Compensar el alto del header para que no tape el contenido */
+main{
+  padding-top: var(--hdr-h);
+}
+
+/* Ajusta la altura compensada en móviles si tu header crece */
+@media (max-width: 820px){
+  :root { --hdr-h: 100px; }
+}
+
+/* 2) Menú hamburguesa: desplegar como tarjeta centrada, no pantalla completa */
+@media (max-width: 820px){
+  /* Oculto por defecto en móvil (tal como ya lo tienes) */
+  .navbar .nav-list{ display: none; }
+
+  /* Al activar: tarjeta centrada debajo del header */
+  .navbar .nav-list.activo{
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+
+    position: fixed;
+    top: var(--hdr-h);
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(460px, 92vw);
+
+    background: rgba(255,255,255,0.98);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 14px;
+    padding: 12px;
+    box-shadow: 0 14px 30px rgba(0,0,0,.18);
+
+    max-height: 60vh;          /* ← no ocupar media pantalla */
+    overflow: auto;
+    z-index: 1499;             /* por debajo del header para evitar solapes raros */
+  }
+
+  .navbar .nav-list.activo li{
+    width: 100%;
+  }
+
+  .navbar .nav-list.activo a{
+    width: 100%;
+    text-align: center;
+    background: #50858b;       /* tu color de marca */
+    color: #fff;
+    padding: .85rem 1rem;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 6px 16px rgba(0,0,0,.12);
+  }
+
+  .navbar .nav-list.activo a:hover,
+  .navbar .nav-list.activo a:focus{
+    background: #3e6b70;
+    outline: none;
+  }
+}
+
+/* 3) Seguridad: evitar cortes por desplazamiento horizontal */
+html, body { overflow-x: hidden; }
+
+/* 4) Asegurar indicadores (puntitos) de carruseles visibles */
+.carousel-indicators{
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 5;
+  pointer-events: none;
+}
+.carousel-indicators span{
+  width: 10px; height: 10px; border-radius: 50%;
+  background: rgba(255,255,255,.6);
+  display: inline-block;
+}
+.carousel-indicators .active{ background: #fff; }

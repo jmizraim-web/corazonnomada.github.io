@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paquetes Mega Travel | Corazón Nómada</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- jQuery -->
+  <script
+    src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-3gJwYp4gU5bS7tF3j7bJw7gIl9V3rroWAt4EAsC0ay0="
+    crossorigin="anonymous">
+  </script>
+</head>
+
+<body>
+  <header class="header-fijo">
+    <div class="contenedor-header">
+      <div class="logo-nav-combo">
+        <div class="logo-titulo">
+          <img src="img/logo.jpg" alt="Corazón Nómada" class="logo">
+          <h1>Corazón Nómada</h1>
+        </div>
+        <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+      </div>
+      <nav class="navbar">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="paquetes.html">Paquetes</a></li>
+          <li><a class="active" href="megatravel.html">Mega&nbsp;Travel</a></li>
+          <li><a href="experiencias.html">Experiencias</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <body class="mega-page">
+
+  <main>
+    <h1>Programación Mega Travel</h1>
+    <p>Explora paquetes siempre actualizados de Mega Travel. Selecciona una categoría:</p>
+
+    <div class="mega-layout">
+      <!-- Menú lateral (desktop/tablet) -->
+      <aside class="mega-menu">
+        <h3>Categorías</h3>
+        <ul class="mega-lista" id="framemenu">
+          <li><a href="#" data-key="ofertas">Mejores Ofertas</a></li>
+          <li><a href="#" data-key="promos">Promociones Vigentes</a></li>
+          <li><a href="#" data-key="1">Europa</a></li>
+          <li><a href="#" data-key="2">Medio Oriente</a></li>
+          <li><a href="#" data-key="3">Canadá</a></li>
+          <li><a href="#" data-key="4">Asia</a></li>
+          <li><a href="#" data-key="5">África</a></li>
+          <li><a href="#" data-key="6">Pacífico</a></li>
+          <li><a href="#" data-key="7">Sudamérica</a></li>
+          <li><a href="#" data-key="8">Estados Unidos</a></li>
+          <li><a href="#" data-key="9">Centroamérica</a></li>
+          <li><a href="#" data-key="10">Cuba y el Caribe</a></li>
+          <li><a href="#" data-key="11">Nacionales</a></li>
+          <li><a href="#" data-key="12">Eventos Especiales</a></li>
+          <li><a href="#" data-key="13">Cruceros</a></li>
+        </ul>
+      </aside>
+
+      <!-- Contenido -->
+      <section class="mega-contenido">
+        <!-- Select móvil -->
+        <div class="mega-select-wrap">
+          <select class="mega-select" id="megaSelect" aria-label="Selecciona una categoría">
+            <option value="ofertas">Mejores Ofertas</option>
+            <option value="promos">Promociones Vigentes</option>
+            <option value="1">Europa</option>
+            <option value="2">Medio Oriente</option>
+            <option value="3">Canadá</option>
+            <option value="4">Asia</option>
+            <option value="5">África</option>
+            <option value="6">Pacífico</option>
+            <option value="7">Sudamérica</option>
+            <option value="8">Estados Unidos</option>
+            <option value="9">Centroamérica</option>
+            <option value="10">Cuba y el Caribe</option>
+            <option value="11">Nacionales</option>
+            <option value="12">Eventos Especiales</option>
+            <option value="13">Cruceros</option>
+          </select>
+        </div>
+
+        <h2 id="titulo" class="mega-titulo">Mejores Ofertas</h2>
+
+        <div class="mega-frame-wrap">
+          <!-- SRC inicial para que siempre se vea algo -->
+          <iframe
+            id="iframeMega"
+            class="mega-frame"
+            title="Catálogo Mega Travel"
+            loading="lazy"
+            src="https://www.megatravel.com.mx/tools/ofertas-viaje.php?txtColor=333333&lblTPaq=50858b&lblTRange=555555&lblNumRange=888888&itemBack=f5f5f5&ItemHov=e1e1e1&txtColorHov=000000&ff=9">
+          </iframe>
+        </div>
+
+        <p class="mega-legend">Contenido proporcionado por Mega Travel (La Mega Conexión). Se actualiza automáticamente.</p>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer del sitio -->
+  <footer class="footer">
+    <div class="footer-contenido">
+      <div class="footer-logo">
+        <p class="nombre-marca">Corazón Nómada</p>
+        <p>Explora, siente, viaja. Vive con Corazón Nómada.</p>
+      </div>
+
+      <div class="footer-contacto">
+        <h4>Contacto</h4>
+        <p>Email: <a href="mailto:corazonnomada.ags@gmail.com">corazonnomada.ags@gmail.com</a></p>
+        <p>WhatsApp: <a href="https://wa.me/524494980275" target="_blank">+52 449 498 0275</a></p>
+      </div>
+
+      <div class="footer-redes">
+        <h4>Síguenos</h4>
+        <a href="https://facebook.com" target="_blank">Facebook</a>
+        <a href="https://instagram.com" target="_blank">Instagram</a>
+        <a href="https://tiktok.com" target="_blank">TikTok</a>
+      </div>
+
+      <div class="footer-enlaces">
+        <h4>Enlaces</h4>
+        <a href="index.html">Inicio</a>
+        <a href="paquetes.html">Paquetes</a>
+        <a href="contacto.html">Reservar</a>
+        <a href="experiencias.html">Experiencias</a>
+      </div>
+    </div>
+
+    <div class="footer-derechos">
+      <p>© 2025 Corazón Nómada. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <a 
+    href="https://wa.me/4494980275" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    class="whatsapp-float"
+    aria-label="Chat WhatsApp"
+    title="Contáctanos por WhatsApp"
+  >
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    // Menú hamburguesa
+    const toggle = document.getElementById('menu-toggle');
+    const navList = document.getElementById('nav-list');
+    toggle.addEventListener('click', () => {
+      navList.classList.toggle('activo');
+    });
+
+    // Efecto scroll header
+    document.addEventListener('DOMContentLoaded', function() {
+      const header = document.querySelector('.header-fijo');
+      window.addEventListener('scroll', function() {
+        header.classList.toggle('scrolled', window.scrollY > 50);
+      });
+    });
+
+    // ================== Mega Conexión (vanilla JS) ==================
+    const paramsVI = "txtColor=333333&aColor=50858b&ahColor=000000&thBG=dddddd&thTxColor=000000&ff=9";
+    const paramsOfertas = "txtColor=333333&lblTPaq=50858b&lblTRange=555555&lblNumRange=888888&itemBack=f5f5f5&ItemHov=e1e1e1&txtColorHov=000000&ff=9";
+
+    const MEGA_URLS = {
+      ofertas:   { url: `https://www.megatravel.com.mx/tools/ofertas-viaje.php?${paramsOfertas}`, titulo: "Mejores Ofertas" },
+      promos:    { url: `https://www.megatravel.com.mx/tools/vi.php?${paramsVI}`,                   titulo: "Promociones Vigentes" },
+      "1":       { url: `https://www.megatravel.com.mx/tools/vi.php?Dest=1&${paramsVI}`,            titulo: "Europa" },
+      "2":       { url: `https://www.megatravel.com.mx/tools/vi.php?Dest=2&${paramsVI}`,            titulo: "Medio Oriente" },
+      "3":       { url: `https://www.megatravel.com.mx/tools/vi.php?Dest=3&${paramsVI}`,            titulo: "Canadá" },
+      "4":       { url: `https://www.megatravel.com.mx/tools/vi.php?Dest=4&${paramsVI}`,            titulo: "Asia" },
+      "5":       { url: `https://www.megatravel.com.mx/tools/vi.php?Dest=5&${paramsVI}`,            titulo: "África" },
+      "6":       { url: `https://www.megatravel.com.mx/tools/vi.php?Dest=6&${paramsVI}`,            titulo: "Pacífico" },
+      "7":       { url: `https://www.megatravel.com.mx/tools/vi.php?Dest=7&${paramsVI}`,            titulo: "Sudamérica" },
+      "8":       { url: `https://www.megatravel.com.mx/tools/vi.php?Dest=8&${paramsVI}`,            titulo: "Estados Unidos" },
+      "9":       { url: `https://www.megatravel.com.mx/tools/vi.php?Dest=9&${paramsVI}`,            titulo: "Centroamérica" },
+      "10":      { url: `https://www.megatravel.com.mx/tools/vi.php?Dest=10&${paramsVI}`,           titulo: "Cuba y el Caribe" },
+      "11":      { url: `https://www.megatravel.com.mx/tools/vi.php?Dest=11&${paramsVI}`,           titulo: "Nacionales" },
+      "12":      { url: `https://www.megatravel.com.mx/tools/vi.php?Dest=12&${paramsVI}`,           titulo: "Eventos Especiales" },
+      "13":      { url: `https://www.megatravel.com.mx/tools/vi.php?Dest=13&${paramsVI}`,           titulo: "Cruceros" }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const iframe = document.getElementById('iframeMega');
+      const titulo = document.getElementById('titulo');
+      const framemenu = document.getElementById('framemenu');
+      const megaSelect = document.getElementById('megaSelect');
+
+      function setFrameByKey(key) {
+        const item = MEGA_URLS[key] || MEGA_URLS["ofertas"];
+        if (iframe) iframe.src = item.url;
+        if (titulo) titulo.textContent = item.titulo;
+
+        if (framemenu) {
+          framemenu.querySelectorAll('a[data-key]').forEach(a => a.classList.remove('activo'));
+          const active = framemenu.querySelector(`a[data-key="${key}"]`);
+          if (active) active.classList.add('activo');
+        }
+        if (megaSelect) megaSelect.value = key;
+      }
+
+      // Inicial: forzamos “Mejores Ofertas” (por si el navegador ignora el src inicial)
+      setFrameByKey('ofertas');
+
+      // Click en menú lateral (desktop/tablet)
+      if (framemenu) {
+        framemenu.addEventListener('click', (e) => {
+          const a = e.target.closest('a[data-key]');
+          if (!a) return;
+          e.preventDefault();
+          setFrameByKey(a.dataset.key);
+        });
+      }
+
+      // Cambio en select (móvil)
+      if (megaSelect) {
+        megaSelect.addEventListener('change', () => setFrameByKey(megaSelect.value));
+      }
+    });
+  </script>
+</body>
+</html>
