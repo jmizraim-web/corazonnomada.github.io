@@ -700,6 +700,12 @@ textarea {
   #btnMostrarFormulario {
     width: 100%;
   }
+
+  .collage-video {
+    width: 100vw;
+    height: 100vw;
+    display: block;
+  }
 }
 
 textarea,
